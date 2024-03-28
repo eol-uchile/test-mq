@@ -8,6 +8,10 @@ fi
 
 archivo="$1"
 
+#Retraso de 15 segundo
+echo "esperando 15 segundos..."
+sleep 15
+
 # Lógica de prueba simulada
 if grep -q "ya valiste" "$archivo"; then
   echo "Se encontró la palabra 'ya valiste'. FALLO."
