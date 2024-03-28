@@ -15,7 +15,7 @@ jobs:
       - name: Ejecutar prueba de Merge Queue
         run: |
           cd $GITHUB_WORKSPACE
-          bash test-mq.sh $GITHUB_WORKSPACE/archivo-prueba.txt
+          bash test-mq-2.sh $GITHUB_WORKSPACE/archivo-prueba.txt
 
       - name: Verificar resultado
         if: ${{ failure() }}
