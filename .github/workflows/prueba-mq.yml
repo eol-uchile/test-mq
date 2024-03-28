@@ -1,0 +1,24 @@
+name: Prueba de Merge Queue
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+  merge_group:
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Ejecutar prueba de Merge Queue
+        run: |
+          cd $GITHUB_WORKSPACE
+          bash test-mq.sh $GITHUB_WORKSPACE/archivo-prueba.txt
+
+      - name: Verificar resultado
+        if: ${{ failure() }}
+        run: exit 1
