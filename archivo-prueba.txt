@@ -4,7 +4,7 @@ Pero asegurémonos de incluir las palabras clave.
 
 Por ejemplo:
 - Esta línea no tiene ninguna de las palabras clave.
-- Pero esta línea contiene "ya wey 1".
+- Pero esta línea contiene "ya wey 2".
 
 Es importante que el script las encuentre correctamente.
-Si encuentra "ya wey 1", debería fallar.
+Si encuentra "ya wey 2", debería fallar.
