@@ -1,10 +1,8 @@
 name: Prueba de Merge Queue
 
 on:
-  pull_request:
-    branches:
-      - 'master'
   merge_group:
+    branches: [ master ]
 
 jobs:
   prueba:
