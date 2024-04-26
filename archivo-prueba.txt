@@ -7,4 +7,4 @@ Por ejemplo:
 - Pero esta línea contiene "".
 
 Es importante que el script las encuentre correctamente.
-Si encuentra "", debería fallar.
+Si encuentra "este mensaje viene desde MQ-2 y es una rama basada en master y no tienen las palabras claves", debería fallar.
