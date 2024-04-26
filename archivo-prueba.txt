@@ -6,4 +6,4 @@ Por ejemplo:
 - Esta línea no tiene ninguna de las palabras clave.
 
 Es importante que el script las encuentre correctamente.
-Si encuentra "ya y wey", debería fallar.
+Si encuentra "", debería fallar.
