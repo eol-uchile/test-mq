@@ -2,7 +2,16 @@ name: Prueba de Merge Queue
 
 on:
   merge_group:
-    branches: [ master ]
+  push:
+    paths-ignore:
+      - '.github/workflows/**'
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - 'master'
 
 jobs:
   prueba:
@@ -20,3 +29,11 @@ jobs:
       - name: Verificar resultado
         if: ${{ failure() }}
         run: exit 1
+
+  MQ-ok:
+    name: MQ-ok
+    needs: [prueba]
+    runs-on: ubuntu-latest
+    steps:
+      - name: CI succeeded
+        run: exit 0
