@@ -7,4 +7,4 @@ Por ejemplo:
 - Pero esta línea contiene "ya".
 
 Es importante que el script las encuentre correctamente.
-Si encuentra "ya", debería fallar.
+Si encuentra "wey", debería fallar.
