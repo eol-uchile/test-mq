@@ -1,1 +1,0 @@
-se agregar este archivo desde MQ-2 sin tener los cambios de MERGE-1.
