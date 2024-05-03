@@ -2,13 +2,14 @@ name: Prueba de Merge Queue
 
 on:
   merge_group:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-    branches:
-      - 'master'
+    types: [checks_requested]
+#  pull_request:
+#  types:
+#      - opened
+#      - reopened
+#      - synchronize
+#    branches:
+#      - 'master'
 
 jobs:
   prueba:
