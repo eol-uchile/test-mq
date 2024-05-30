@@ -1,8 +1,6 @@
 name: Prueba de Merge Queue
 
 on:
-  merge_group:
-    types: [checks_requested]
   pull_request:
     types:
         - opened
@@ -23,7 +21,7 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
-      - name: Ejecutar prueba de Merge Queue
+      - name: Ejecutar prueba
         run: |
           cd $GITHUB_WORKSPACE
           bash test-mq-2.sh $GITHUB_WORKSPACE/archivo-prueba.txt
@@ -32,10 +30,8 @@ jobs:
         if: ${{ failure() }}
         run: exit 1
 
-  MQ-ok:
-    name: MQ-ok
-    needs: [prueba]
-    runs-on: ubuntu-latest
-    steps:
-      - name: CI succeeded
-        run: exit 0
+      - name: Fast Forward PR
+        uses: ./.github/workflows/ffpr.yml
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
