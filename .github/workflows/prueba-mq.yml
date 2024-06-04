@@ -36,9 +36,9 @@ jobs:
     needs: [ prueba ]
     runs-on: ubuntu-latest
     steps:
-     - name: Fast-Forward PR
-       uses: endre-spotlab/fast-forward-js-action@2.1
-       with:
+      - name: Comment on PR
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          production_branch: 'master'
-          staging_branch: 'staging'
+        run: |
+          pr_number=$(jq --raw-output .number "$GITHUB_EVENT_PATH")
+          curl -s -H "Authorization: token $GITHUB_TOKEN" -X POST -d "{\"body\": \"/fast-forward\"}" "https://api.github.com/repos/${{ github.repository }}/issues/$pr_number/comments"
