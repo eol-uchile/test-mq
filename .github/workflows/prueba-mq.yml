@@ -1,8 +1,8 @@
 name: Prueba de Merge Queue
 
 on:
-  merge_group:
-    types: [checks_requested]
+  # merge_group:
+  #   types: [checks_requested]
   pull_request:
     types:
         - opened
@@ -32,10 +32,7 @@ jobs:
         if: ${{ failure() }}
         run: exit 1
 
-  MQ-ok:
-    name: MQ-ok
-    needs: [prueba]
-    runs-on: ubuntu-latest
-    steps:
-      - name: CI succeeded
-        run: exit 0
+  ff-merge:
+    needs: [ prueba ]
+    uses: ./.github/workflows/ff-merge.yml
+    secrets: inherit
