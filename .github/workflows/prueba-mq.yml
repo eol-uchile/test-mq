@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Ejecutar prueba de Merge Queue
         run: |
@@ -34,5 +34,11 @@ jobs:
 
   ff-merge:
     needs: [ prueba ]
-    uses: ./.github/workflows/ff-merge.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr_number=$(jq --raw-output .number "$GITHUB_EVENT_PATH")
+          curl -s -H "Authorization: token $GITHUB_TOKEN" -X POST -d "{\"body\": \"/fast-forward\"}" "https://api.github.com/repos/${{ github.repository }}/issues/$pr_number/comments"
