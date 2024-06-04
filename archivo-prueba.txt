@@ -4,7 +4,7 @@ Pero asegurémonos de incluir las palabras clave.
 
 Por ejemplo:
 - Esta línea no tiene ninguna de las palabras clave.
-- Pero esta línea contiene "cambios generados desde MERGE-2 y van a generar conflicto jaja".
+- Pero esta línea contiene "".
 
 Es importante que el script las encuentre correctamente.
 Si encuentra "", debería fallar.
