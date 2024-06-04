@@ -4,7 +4,6 @@ on:
   workflow_call:
   issue_comment:
     types: [created]
-
 jobs:
   fast_forward_job:
     name: Fast Forward
@@ -14,10 +13,10 @@ jobs:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v4
-      # Basic use case example
+
       - name: Fast Forward PR
         id: ff-action
-        uses:  ./
+        uses: endre-spotlab/fast-forward-js-action@2.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           success_message: 'Success! Fast forwarded ***target_base*** to ***source_head***! ```git checkout target_base && git merge source_head --ff-only``` '

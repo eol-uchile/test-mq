@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Ejecutar prueba de Merge Queue
         run: |
@@ -34,5 +34,11 @@ jobs:
 
   ff-merge:
     needs: [ prueba ]
-    uses: ./.github/workflows/ff-merge.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+     - name: Fast-Forward PR
+       uses: endre-spotlab/fast-forward-js-action@2.1
+       with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          production_branch: 'master'
+          staging_branch: 'staging'
