@@ -3,7 +3,7 @@ name: Fast-Forward PR
 on:
   workflow_call:
   issue_comment:
-    types: [created]
+    types: [created, edited]
 jobs:
   fast_forward_job:
     name: Fast Forward
