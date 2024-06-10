@@ -12,7 +12,6 @@ on:
     branches:
         - 'master'
 
-
 jobs:
   prueba:
     runs-on: ubuntu-latest
