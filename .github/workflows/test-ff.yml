@@ -5,6 +5,8 @@ on:
     types: [created, edited]
 jobs:
   fast_forward_job:
+    permissions:
+      packages: write
     name: Fast Forward
     if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/ff')
     runs-on: ubuntu-latest
