@@ -19,7 +19,7 @@ jobs:
         id: ff-action
         uses: endre-spotlab/fast-forward-js-action@2.1
         with:
-          GITHUB_TOKEN: ${{ secrets.FAST_FORWARD_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}
           success_message: 'Success! Fast forwarded target_base to source_head!'
           failure_message: 'Failed! Cannot do fast forward!'
           update_status: true
