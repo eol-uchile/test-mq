@@ -8,8 +8,6 @@ jobs:
     name: Fast Forward
     if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/ff')
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
 
 
     steps:
