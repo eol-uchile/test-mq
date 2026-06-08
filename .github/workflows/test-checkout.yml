@@ -1,0 +1,39 @@
+name: Test Checkout
+
+on:
+  pull_request_target:
+    branches:
+      - master
+
+jobs:
+  test-default-checkout:
+    name: Checkout default
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout without ref
+        uses: actions/checkout@v4
+      
+      - name: Show checked out commit
+        run: |
+          echo "Checked out commit:"
+          git log -1
+          echo "-----------------------------------"
+          echo "GITHUB_SHA: $GITHUB_SHA"
+          echo "GITHUB_REF: $GITHUB_REF"
+
+  test-explicit-checkout:
+    name: Checkout explicit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with explicit ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      
+      - name: Show checked out commit
+        run: |
+          echo "Checked out commit:"
+          git log -1
+          echo "-----------------------------------"
+          echo "GITHUB_SHA: $GITHUB_SHA"
+          echo "GITHUB_REF: $GITHUB_REF"
