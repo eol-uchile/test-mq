@@ -1,0 +1,48 @@
+name: Test Push Detached HEAD
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  test-git-push-1:
+    name: git push sin ref
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with explicit ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      
+      - name: Show git status
+        run: git status
+      
+      - name: Make dummy change
+        run: |
+          echo "cambio1" >> prueba-push.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add prueba-push.txt
+          git commit -m "Test push"
+      
+      - name: Try git push
+        run: git push --dry-run
+
+  test-git-push-2:
+    name: git push origin HEAD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with explicit ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      
+      - name: Make dummy change
+        run: |
+          echo "cambio2" >> prueba-push.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add prueba-push.txt
+          git commit -m "Test push"
+      
+      - name: Try git push origin HEAD
+        run: git push --dry-run origin HEAD:${{ github.ref }}
